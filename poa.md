@@ -12,6 +12,15 @@
 
 ## Steps
 - how is audio even processed in linux? I believe it must be a real time stream of bits 
+    - (how audio works in linux)[https://www.reddit.com/r/linux/comments/coi4dt/a_complete_guide_of_and_debunking_of_audio_on/]
+    - ALSA talks to drivers 
+    - ALSA can only handle one audio stream
+    - so we have sound servers like pipewire and pulseaudio
+    - these servers take audio from multiple applications and mixed them into a single audio stream
+    - this single audio stream is then sent to ALSA which in turn sends it to the drivers
+    - So I think I need to access the output of pipewire-audio in my rust thing
+        - (this shows how to use pipewire api in rust)[https://acalustra.com/playing-with-pipewire-audio-streams-and-rust.html]
+            - but first I need to set up rust in neovim and prolly something to render markdown too!
 - let me first check out how to get audio in a tangible form in Rust
 - then I would have to check how that stream of bits is converted into the bars 
 - then I will find a way to print those bars
